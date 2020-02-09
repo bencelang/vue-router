@@ -262,7 +262,7 @@ function extractGuards (
     const guard = extractGuard(def, name)
     if (guard) {
       return Array.isArray(guard)
-        ? guard.map(guard => bind(guard, instance, match, key))
+        ? guard.filter(guard => !!guard).map(guard => bind(guard, instance, match, key))
         : bind(guard, instance, match, key)
     }
   })
